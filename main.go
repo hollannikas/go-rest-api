@@ -53,8 +53,8 @@ func handleRequests() {
 	// creates a new instance of a mux router
 	myRouter := mux.NewRouter().StrictSlash(true)
 	// replace http.HandleFunc with myRouter.HandleFunc
-	myRouter.HandleFunc("/all", allCustomers)
-	myRouter.HandleFunc("/customer/{id}", customer)
+	myRouter.HandleFunc("/customers", allCustomers)
+	myRouter.HandleFunc("/customers/{id}", customer)
 	// finally, instead of passing in nil, we want
 	// to pass in our newly created router as the second
 	// argument
