@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -20,15 +19,6 @@ type Customer struct {
 
 // Customers TODO: replace with DB
 var Customers []Customer
-
-func homePage(w http.ResponseWriter, _ *http.Request) {
-	_, err := fmt.Fprintf(w, "Welcome to the HomePage!")
-	if err != nil {
-		log.Println("It broke")
-		return
-	}
-	log.Println("Endpoint Hit: homePage")
-}
 
 func allCustomers(w http.ResponseWriter, _ *http.Request) {
 	log.Println("Endpoint Hit: allCustomers")
@@ -63,7 +53,6 @@ func handleRequests() {
 	// creates a new instance of a mux router
 	myRouter := mux.NewRouter().StrictSlash(true)
 	// replace http.HandleFunc with myRouter.HandleFunc
-	myRouter.HandleFunc("/", homePage)
 	myRouter.HandleFunc("/all", allCustomers)
 	myRouter.HandleFunc("/customer/{id}", customer)
 	// finally, instead of passing in nil, we want
